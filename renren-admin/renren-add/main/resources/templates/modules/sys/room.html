@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:room:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:room:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:room:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房间号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.number" placeholder="房间号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.name" placeholder="公司名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">楼层</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.floor" placeholder="楼层"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">简介</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.intro" placeholder="简介"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总价</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.totalPrices" placeholder="总价"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">单价</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.unitPrices" placeholder="单价"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">面积</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.acreage" placeholder="面积"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">装修</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.decorate" placeholder="装修"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">租用状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.leaseState" placeholder="租用状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">工位数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.galleryful" placeholder="工位数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">租期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.deadline" placeholder="租期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房型图</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.map" placeholder="房型图"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属园区</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.garden" placeholder="所属园区"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">水费</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.waterBill" placeholder="水费"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">水费截止时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.waterDeadline" placeholder="水费截止时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">电费</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.electricityBill" placeholder="电费"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">电费截止时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.electricityDeadline" placeholder="电费截止时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">物业费</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.propertyCosts" placeholder="物业费"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">物业费截止时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.propertyDeadline" placeholder="物业费截止时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="room.gmtCreate" placeholder="创建时间"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/room.js?_${.now?long}"></script>
+</body>
+</html>
