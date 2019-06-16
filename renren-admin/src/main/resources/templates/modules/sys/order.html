@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:order:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:order:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:order:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.number" placeholder="订单编号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户名字</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.name" placeholder="用户名字"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属房间号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.room" placeholder="所属房间号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属园区</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.garden" placeholder="所属园区"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">缴费类型（水电。。。）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.type" placeholder="缴费类型（水电。。。）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">缴费方式</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.paymentMethod" placeholder="缴费方式"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">缴费金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.paymentAmount" placeholder="缴费金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">缴费状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.state" placeholder="缴费状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">缴费日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.date" placeholder="缴费日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="order.gmtCreate" placeholder="创建时间"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/order.js?_${.now?long}"></script>
+</body>
+</html>

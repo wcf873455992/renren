@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.sys.dao.RoomDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.sys.entity.RoomEntity" id="roomMap">
+        <result property="id" column="id"/>
+        <result property="number" column="number"/>
+        <result property="name" column="name"/>
+        <result property="floor" column="floor"/>
+        <result property="intro" column="intro"/>
+        <result property="totalPrices" column="total_prices"/>
+        <result property="unitPrices" column="unit_prices"/>
+        <result property="acreage" column="acreage"/>
+        <result property="decorate" column="decorate"/>
+        <result property="leaseState" column="Lease_state"/>
+        <result property="galleryful" column="galleryful"/>
+        <result property="deadline" column="deadline"/>
+        <result property="map" column="map"/>
+        <result property="garden" column="garden"/>
+        <result property="waterBill" column="water_bill"/>
+        <result property="waterDeadline" column="water_deadline"/>
+        <result property="electricityBill" column="electricity_bill"/>
+        <result property="electricityDeadline" column="electricity_deadline"/>
+        <result property="propertyCosts" column="Property_costs"/>
+        <result property="propertyDeadline" column="Property_deadline"/>
+        <result property="gmtCreate" column="gmt_create"/>
+    </resultMap>
+
+
+</mapper>
