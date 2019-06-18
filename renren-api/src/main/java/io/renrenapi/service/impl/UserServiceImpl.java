@@ -51,6 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
 
 		Map<String, Object> map = new HashMap<>(2);
 		map.put("token", tokenEntity.getToken());
+		map.put("username", user.getUsername());
 		map.put("expire", tokenEntity.getExpireTime().getTime() - System.currentTimeMillis());
 
 		return map;
