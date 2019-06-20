@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import io.renren.common.validator.ValidatorUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,7 @@ import io.renren.common.utils.R;
  */
 @RestController
 @RequestMapping("sys/garden")
+@Api(tags = "园区管理")
 public class GardenController {
     @Autowired
     private GardenService gardenService;
@@ -37,6 +40,7 @@ public class GardenController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:garden:list")
+    @ApiOperation("获取园区列表")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = gardenService.queryPage(params);
 

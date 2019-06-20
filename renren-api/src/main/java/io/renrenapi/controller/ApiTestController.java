@@ -13,7 +13,9 @@ import io.renrenapi.annotation.LoginUser;
 import io.renren.common.utils.R;
 import io.renrenapi.entity.UserEntity;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,19 +36,23 @@ public class ApiTestController {
     @GetMapping("userInfo")
     @ApiOperation(value="获取用户信息", response=UserEntity.class)
     public R userInfo(@ApiIgnore @LoginUser UserEntity user){
+
         return R.ok().put("user", user);
     }
 
     @Login
     @GetMapping("userId")
     @ApiOperation("获取用户ID")
+    @ApiImplicitParam(name = "token")
     public R userInfo(@ApiIgnore @RequestAttribute("userId") Integer userId){
+
         return R.ok().put("userId", userId);
     }
 
     @GetMapping("notToken")
     @ApiOperation("忽略Token验证测试")
     public R notToken(){
+
         return R.ok().put("msg", "无需token也能访问。。。");
     }
 
