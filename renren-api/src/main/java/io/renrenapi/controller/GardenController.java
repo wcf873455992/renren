@@ -38,7 +38,7 @@ public class GardenController {
      * 列表
      */
     @RequestMapping("/list")
-    @ApiOperation("列表")
+    @ApiOperation(value = "列表",httpMethod = "POST")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = gardenService.queryPage(params);
 
@@ -50,7 +50,7 @@ public class GardenController {
      * 信息
      */
     @RequestMapping("/info/{gardenId}")
-    @ApiOperation("info")
+    @ApiOperation(value = "info",httpMethod = "POST")
     public R info(@PathVariable("gardenId") Integer gardenId){
         GardenEntity garden = gardenService.getById(gardenId);
 
