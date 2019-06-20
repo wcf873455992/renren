@@ -11,6 +11,7 @@ package io.renrenapi.controller;
 import io.renrenapi.annotation.Login;
 import io.renrenapi.annotation.LoginUser;
 import io.renren.common.utils.R;
+import io.renrenapi.entity.GoodEntity;
 import io.renrenapi.entity.UserEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -56,4 +57,11 @@ public class ApiTestController {
         return R.ok().put("msg", "无需token也能访问。。。");
     }
 
+
+    @GetMapping("goodlist")
+    @ApiOperation(value="获取园区信息", response= GoodEntity.class)
+    public R goodInfo(  GoodEntity good){
+
+        return R.ok().put("user", good);
+    }
 }

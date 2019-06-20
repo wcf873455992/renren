@@ -1,33 +1,33 @@
-package io.renren.modules.sys.entity;
+package io.renrenapi.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 商品管理
+ * 
  * 
  * @author Mark
  * @email sunlightcs@gmail.com
- * @date 2019-06-16 18:21:06
+ * @date 2019-06-20 20:12:24
  */
 @Data
-@TableName("tb_goods")
-public class GoodsEntity implements Serializable {
+@TableName("tb_garden")
+public class GardenEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	/**
-	 *
+	 * 
 	 */
 	@TableId
-	private Integer id;
+	private Integer gardenId;
 	/**
 	 * 园区名称
 	 */
-	private String name;
+	private String gardenName;
 	/**
 	 * 位置
 	 */
@@ -76,4 +76,5 @@ public class GoodsEntity implements Serializable {
 	 * 创建时间
 	 */
 	private Date gmtCreate;
+
 }

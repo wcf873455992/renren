@@ -13,6 +13,7 @@ import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renrenapi.annotation.Login;
 import io.renrenapi.form.LoginForm;
+import io.renrenapi.service.GoodService;
 import io.renrenapi.service.TokenService;
 import io.renrenapi.service.UserService;
 import io.swagger.annotations.Api;
@@ -37,25 +38,38 @@ public class ApiGoodController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private GoodService goodService;
 
-    @PostMapping("login")
-    @ApiOperation("登录")
-    public R login(@RequestBody LoginForm form){
-        //表单校验
-        ValidatorUtils.validateEntity(form);
+
+    @PostMapping("list")
+    @ApiOperation("园区列表")
+    public R gardenlist(@RequestBody LoginForm form){
 
         //用户登录
-        Map<String, Object> map = userService.login(form);
+        Map<String, Object> map = goodService.list(form);
 
         return R.ok(map);
     }
 
-    @Login
-    @PostMapping("logout")
-    @ApiOperation("退出")
-    public R logout(@ApiIgnore @RequestAttribute("userId") long userId){
-        tokenService.expireToken(userId);
-        return R.ok();
-    }
+//    @PostMapping("login")
+//    @ApiOperation("登录")
+//    public R login(@RequestBody LoginForm form){
+//        //表单校验
+//        ValidatorUtils.validateEntity(form);
+//
+//        //用户登录
+//        Map<String, Object> map = userService.login(form);
+//
+//        return R.ok(map);
+//    }
+//
+//    @Login
+//    @PostMapping("logout")
+//    @ApiOperation("退出")
+//    public R logout(@ApiIgnore @RequestAttribute("userId") long userId){
+//        tokenService.expireToken(userId);
+//        return R.ok();
+//    }
 
 }
