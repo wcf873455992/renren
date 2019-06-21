@@ -10,9 +10,9 @@ import java.util.Date;
 /**
  * 
  * 
- * @author Mark
- * @email sunlightcs@gmail.com
- * @date 2019-06-20 20:12:24
+ * @author wcf
+ * @email 873455992@qq.com
+ * @date 2019-06-21 17:11:47
  */
 @Data
 @TableName("tb_garden")
@@ -55,7 +55,7 @@ public class GardenEntity implements Serializable {
 	/**
 	 * 图片目录
 	 */
-	private String picture;
+	private String image;
 	/**
 	 * 层高
 	 */
@@ -76,5 +76,13 @@ public class GardenEntity implements Serializable {
 	 * 创建时间
 	 */
 	private Date gmtCreate;
+	/**
+	 * 
+	 */
+	private String image2;
+	/**
+	 * 
+	 */
+	private String image3;
 
 }

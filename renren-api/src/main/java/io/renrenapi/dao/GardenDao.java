@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 
  * 
- * @author Mark
- * @email sunlightcs@gmail.com
- * @date 2019-06-20 20:12:24
+ * @author wcf
+ * @email 873455992@qq.com
+ * @date 2019-06-21 17:11:47
  */
 @Mapper
 public interface GardenDao extends BaseMapper<GardenEntity> {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renrenapi.dao.GardenDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renrenapi.entity.GardenEntity" id="gardenMap">
+        <result property="gardenId" column="garden_id"/>
+        <result property="gardenName" column="garden_name"/>
+        <result property="location" column="location"/>
+        <result property="address" column="address"/>
+        <result property="acreage" column="acreage"/>
+        <result property="prices" column="prices"/>
+        <result property="intro" column="intro"/>
+        <result property="characteristics" column="characteristics"/>
+        <result property="image" column="image"/>
+        <result property="floorHeight" column="Floor_Height"/>
+        <result property="developer" column="developer"/>
+        <result property="property" column="property"/>
+        <result property="vacantRoom" column="vacant_room"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="image2" column="image2"/>
+        <result property="image3" column="image3"/>
+    </resultMap>
+
+
+</mapper>
