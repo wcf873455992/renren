@@ -30,7 +30,7 @@ import io.renren.common.utils.R;
  */
 @RestController
 @RequestMapping("sys/garden")
-@Api(tags = "园区管理")
+//@Api(tags = "园区管理")
 public class GardenController {
     @Autowired
     private GardenService gardenService;
@@ -40,7 +40,7 @@ public class GardenController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:garden:list")
-    @ApiOperation("获取园区列表")
+//    @ApiOperation("获取园区列表")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = gardenService.queryPage(params);
 
