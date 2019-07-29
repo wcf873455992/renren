@@ -28,7 +28,7 @@ import io.renren.common.utils.R;
  * @date 2019-06-25 15:31:08
  */
 @RestController
-@RequestMapping("renrenapi/room")
+@RequestMapping("api/room")
 @Api(tags = "房间管理")
 public class RoomController {
     @Autowired
@@ -38,8 +38,8 @@ public class RoomController {
      * 列表
      */
     @RequestMapping("/list")
-//    @ApiOperation(value = "列表",httpMethod = "POST")
-    @ApiOperation(value = "列表")
+    @ApiOperation(value = "列表",httpMethod = "POST")
+//    @ApiOperation(value = "列表")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = roomService.queryPage(params);
 
@@ -51,8 +51,8 @@ public class RoomController {
      * 信息
      */
     @RequestMapping("/info/{roomId}")
-//    @ApiOperation(value = "房间信息",httpMethod = "POST")
-    @ApiOperation(value = "房间信息")
+    @ApiOperation(value = "房间信息",httpMethod = "POST")
+//    @ApiOperation(value = "房间信息")
     public R info(@PathVariable("roomId") Integer roomId){
         RoomEntity room = roomService.getById(roomId);
 
