@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renrenapi.dao.HouseDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renrenapi.entity.HouseEntity" id="houseMap">
+        <result property="id" column="Id"/>
+        <result property="renttype" column="RentType"/>
+        <result property="name" column="Name"/>
+        <result property="unitprice" column="UnitPrice"/>
+        <result property="totalprice" column="TotalPrice"/>
+        <result property="buildingid" column="BuildingId"/>
+        <result property="worknum" column="WorkNum"/>
+        <result property="heightcatedesc" column="HeightCateDesc"/>
+        <result property="visitnum" column="VisitNum"/>
+        <result property="area" column="Area"/>
+        <result property="decoratetypedesc" column="DecorateTypeDesc"/>
+        <result property="rentexperience" column="RentExperience"/>
+        <result property="evalutedegree" column="EvaluteDegree"/>
+        <result property="description" column="Description"/>
+        <result property="pic" column="Pic"/>
+        <result property="traffic" column="Traffic"/>
+        <result property="isfavorites" column="IsFavorites"/>
+        <result property="lat" column="Lat"/>
+        <result property="lng" column="Lng"/>
+        <result property="orientationdesc" column="OrientationDesc"/>
+        <result property="housestatus" column="HouseStatus"/>
+        <result property="renttypename" column="RentTypeName"/>
+        <result property="houseshareurl" column="HouseShareUrl"/>
+        <result property="houseshareurlwithlabels" column="HouseShareurlWithLabels"/>
+        <result property="housetypepicture" column="HouseTypePicture"/>
+        <result property="housefeature" column="HouseFeature"/>
+        <result property="houselabels" column="HouseLabels"/>
+        <result property="brokeragedesc" column="BrokerageDesc"/>
+        <result property="deliverystandard" column="DeliveryStandard"/>
+        <result property="deliverydesc" column="DeliveryDesc"/>
+        <result property="specialexplain" column="SpecialExplain"/>
+        <result property="minrentperiod" column="MinRentPeriod"/>
+        <result property="remitrentperiod" column="RemitRentPeriod"/>
+        <result property="address" column="Address"/>
+        <result property="supperoffice" column="SupperOffice"/>
+        <result property="housewithseecount" column="HouseWithSeeCount"/>
+        <result property="housewithsigndistance" column="HouseWithSignDistance"/>
+        <result property="buildingtype" column="BuildingType"/>
+        <result property="buildingtypeid" column="BuildingTypeId"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("renrenapi:building:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("renrenapi:building:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("renrenapi:building:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">地区</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.address" placeholder="地区"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">办公面积范围</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.areas" placeholder="办公面积范围"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.buildingaddress" placeholder="建筑详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">园区介绍</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.buildingintroduction" placeholder="园区介绍"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑类型(自营等)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.buildingtype" placeholder="建筑类型(自营等)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商圈</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.circlename" placeholder="商圈"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">封面图片</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.coverpic" placeholder="封面图片"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">区地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.districtname" placeholder="区地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">楼盘特点</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.features" placeholder="楼盘特点"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">佣金</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.houselabels" placeholder="佣金"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.name" placeholder="建筑名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">超级办公</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.supperoffice" placeholder="超级办公"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">单价</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.unitprice" placeholder="单价"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">最低价</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.unitpricenum" placeholder="最低价"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">访问数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.visitnum" placeholder="访问数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">待租数量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.waittingrentcount" placeholder="待租数量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">纬度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.latitude" placeholder="纬度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">经度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.longitude" placeholder="经度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">入住企业介绍</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.settledenterprise" placeholder="入住企业介绍"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分享链接</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.shareurl" placeholder="分享链接"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑面积</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.area" placeholder="建筑面积"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.description" placeholder="建筑描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">开发商</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.developer" placeholder="开发商"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">开发年份</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.developeryear" placeholder="开发年份"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">标准层高</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.floorheight" placeholder="标准层高"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总楼层</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.floornum" placeholder="总楼层"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">电梯数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.liftnum" placeholder="电梯数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">停车位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.parkinglotnum" placeholder="停车位"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">物业公司</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.propertycompany" placeholder="物业公司"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">物业费</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="building.propertyfee" placeholder="物业费"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/renrenapi/building.js?_${.now?long}"></script>
+</body>
+</html>

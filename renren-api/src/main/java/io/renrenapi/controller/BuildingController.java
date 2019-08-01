@@ -9,8 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import io.renrenapi.entity.RoomEntity;
-import io.renrenapi.service.RoomService;
+import io.renrenapi.entity.BuildingEntity;
+import io.renrenapi.service.BuildingService;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 
@@ -21,16 +21,15 @@ import io.renren.common.utils.R;
  *
  * @author wcf
  * @email 873455992@qq.com
- * @date 2019-06-25 15:31:08
+ * @date 2019-08-01 16:57:05
  */
-
 @CrossOrigin
 @RestController
-@RequestMapping("api/room")
-@Api(tags = "房间管理")
-public class RoomController {
+@RequestMapping("api/building")
+@Api(tags = "园区管理")
+public class BuildingController {
     @Autowired
-    private RoomService roomService;
+    private BuildingService buildingService;
 
     /**
      * 列表
@@ -38,9 +37,8 @@ public class RoomController {
     @CrossOrigin
     @RequestMapping("/list")
     @ApiOperation(value = "列表",httpMethod = "POST")
-//    @ApiOperation(value = "列表")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = roomService.queryPage(params);
+        PageUtils page = buildingService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -50,21 +48,20 @@ public class RoomController {
      * 信息
      */
     @CrossOrigin
-    @RequestMapping("/info/{roomId}")
-    @ApiOperation(value = "房间信息",httpMethod = "POST")
-//    @ApiOperation(value = "房间信息")
-    public R info(@PathVariable("roomId") Integer roomId){
-        RoomEntity room = roomService.getById(roomId);
+    @RequestMapping("/info/{id}")
+    @ApiOperation(value = "info",httpMethod = "POST")
+    public R info(@PathVariable("id") Long id){
+        BuildingEntity building = buildingService.getById(id);
 
-        return R.ok().put("room", room);
+        return R.ok().put("building", building);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody RoomEntity room){
-        roomService.save(room);
+    public R save(@RequestBody BuildingEntity building){
+        buildingService.save(building);
 
         return R.ok();
     }
@@ -73,9 +70,9 @@ public class RoomController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody RoomEntity room){
-        ValidatorUtils.validateEntity(room);
-        roomService.updateById(room);
+    public R update(@RequestBody BuildingEntity building){
+        ValidatorUtils.validateEntity(building);
+        buildingService.updateById(building);
         
         return R.ok();
     }
@@ -84,8 +81,8 @@ public class RoomController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Integer[] roomIds){
-        roomService.removeByIds(Arrays.asList(roomIds));
+    public R delete(@RequestBody Long[] ids){
+        buildingService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

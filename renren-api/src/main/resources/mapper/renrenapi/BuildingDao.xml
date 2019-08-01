@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renrenapi.dao.BuildingDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renrenapi.entity.BuildingEntity" id="buildingMap">
+        <result property="id" column="Id"/>
+        <result property="address" column="Address"/>
+        <result property="areas" column="Areas"/>
+        <result property="buildingaddress" column="BuildingAddress"/>
+        <result property="buildingintroduction" column="BuildingIntroduction"/>
+        <result property="buildingtype" column="BuildingType"/>
+        <result property="circlename" column="CircleName"/>
+        <result property="coverpic" column="CoverPic"/>
+        <result property="districtname" column="DistrictName"/>
+        <result property="features" column="Features"/>
+        <result property="houselabels" column="HouseLabels"/>
+        <result property="name" column="Name"/>
+        <result property="supperoffice" column="SupperOffice"/>
+        <result property="unitprice" column="UnitPrice"/>
+        <result property="unitpricenum" column="UnitPriceNum"/>
+        <result property="visitnum" column="VisitNum"/>
+        <result property="waittingrentcount" column="WaittingRentCount"/>
+        <result property="latitude" column="Latitude"/>
+        <result property="longitude" column="Longitude"/>
+        <result property="settledenterprise" column="SettledEnterprise"/>
+        <result property="shareurl" column="ShareUrl"/>
+        <result property="area" column="Area"/>
+        <result property="description" column="Description"/>
+        <result property="developer" column="Developer"/>
+        <result property="developeryear" column="DeveloperYear"/>
+        <result property="floorheight" column="FloorHeight"/>
+        <result property="floornum" column="FloorNum"/>
+        <result property="liftnum" column="LiftNum"/>
+        <result property="parkinglotnum" column="ParkingLotNum"/>
+        <result property="propertycompany" column="PropertyCompany"/>
+        <result property="propertyfee" column="PropertyFee"/>
+    </resultMap>
+
+
+</mapper>

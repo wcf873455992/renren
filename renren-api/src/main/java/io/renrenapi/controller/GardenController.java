@@ -7,11 +7,7 @@ import io.renren.common.validator.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renrenapi.entity.GardenEntity;
 import io.renrenapi.service.GardenService;
@@ -27,6 +23,8 @@ import io.renren.common.utils.R;
  * @email sunlightcs@gmail.com
  * @date 2019-06-20 20:12:24
  */
+
+@CrossOrigin
 @RestController
 @RequestMapping("api/garden")
 @Api(tags = "园区管理")
@@ -37,6 +35,7 @@ public class GardenController {
     /**
      * 列表
      */
+    @CrossOrigin
     @RequestMapping("/list")
     @ApiOperation(value = "列表",httpMethod = "POST")
     public R list(@RequestParam Map<String, Object> params){
@@ -49,6 +48,7 @@ public class GardenController {
     /**
      * 信息
      */
+    @CrossOrigin
     @RequestMapping("/info/{gardenId}")
     @ApiOperation(value = "info",httpMethod = "POST")
     public R info(@PathVariable("gardenId") Integer gardenId){

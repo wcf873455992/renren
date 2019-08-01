@@ -29,6 +29,8 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api/good")
 @Api(tags="园区接口")

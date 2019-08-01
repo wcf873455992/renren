@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("renrenapi:house:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("renrenapi:house:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("renrenapi:house:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.renttype" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.name" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.unitprice" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.totalprice" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.buildingid" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.worknum" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.heightcatedesc" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.visitnum" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.area" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">装修</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.decoratetypedesc" placeholder="装修"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.rentexperience" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.evalutedegree" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.description" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.pic" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.traffic" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.isfavorites" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">维度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.lat" placeholder="维度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">经度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.lng" placeholder="经度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">朝向</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.orientationdesc" placeholder="朝向"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房间状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.housestatus" placeholder="房间状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">租金类型（按面积）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.renttypename" placeholder="租金类型（按面积）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分享链接</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.houseshareurl" placeholder="分享链接"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.houseshareurlwithlabels" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房型图</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.housetypepicture" placeholder="房型图"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房间特性</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.housefeature" placeholder="房间特性"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">房屋佣金</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.houselabels" placeholder="房屋佣金"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">佣金介绍</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.brokeragedesc" placeholder="佣金介绍"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">装修交付类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.deliverystandard" placeholder="装修交付类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">装修描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.deliverydesc" placeholder="装修描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">特殊服务</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.specialexplain" placeholder="特殊服务"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">最短租期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.minrentperiod" placeholder="最短租期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">免租期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.remitrentperiod" placeholder="免租期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.address" placeholder="详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.supperoffice" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">带看</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.housewithseecount" placeholder="带看"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.housewithsigndistance" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">建筑类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.buildingtype" placeholder="建筑类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="house.buildingtypeid" placeholder=""/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/renrenapi/house.js?_${.now?long}"></script>
+</body>
+</html>
